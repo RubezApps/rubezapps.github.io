@@ -8,3 +8,5 @@ cp -r src/developer/dist/. .
 mkdir -p little-days && cp -r src/little-days-help/dist/. little-days/ && rm -f little-days/robots.txt
 rmdir little-days/en 2>/dev/null || true
 rm -rf src/developer/dist src/little-days-help/dist
+# Short addresses (littledaysparents.com/privacy etc.)
+python3 src/redirects.py
