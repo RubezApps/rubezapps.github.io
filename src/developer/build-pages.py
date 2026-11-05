@@ -1,20 +1,121 @@
+"""Little Days Parents homepage: Vietnamese at / and English at /en/ (littledaysparents.com).
+Run from src/developer (build.sh does this). Writes dist/index.html, dist/en/index.html and dist/robots.txt."""
 from pathlib import Path
-from html import escape
-ROOT=Path(__file__).parent/'dist'
-DATA={
-'vi':dict(title='RubezApps — Ứng dụng cho những điều gần gũi',desc='RubezApps là studio ứng dụng nhỏ của một gia đình tại Việt Nam: ứng dụng cho gia đình, trò chơi học tập cho trẻ và công cụ hữu ích hằng ngày.',skip='Đến nội dung chính',nav='Các ứng dụng',aboutnav='Giới thiệu',lang='English',langhref='/en/',eyebrow='STUDIO ỨNG DỤNG GIA ĐÌNH · VIỆT NAM',h1='Ứng dụng nhỏ.<br><em>Điều ý nghĩa.</em>',intro='Chúng tôi làm ứng dụng cho các gia đình, trò chơi học tập giúp trẻ luyện tiếng Anh và tiếng Việt, cùng những công cụ hữu ích cho cuộc sống hằng ngày. Điều hành bởi Vũ Trần Nhật Nguyên tại Việt Nam.',cta='Khám phá ứng dụng',minisub='Khoảnh khắc nhỏ, kỷ niệm lớn',projects='01 / CÁC ỨNG DỤNG',projectright='Ứng dụng đầu tiên · sắp có thêm',status='Đang phát triển',apptag='Cộng đồng cha mẹ & theo dõi bé',appdesc='Hỏi các bố mẹ khác, nhận câu trả lời từ những người đã trải qua và chia sẻ ảnh, video ngắn về những khoảnh khắc của bé. Bên cạnh đó là nhật ký ăn, ngủ và thay tã giúp việc chăm bé hằng ngày dễ theo dõi hơn.',appcta='Liên hệ về ứng dụng',f1='Hỏi các bố mẹ khác',fd1='Đặt câu hỏi, nhận câu trả lời và bình luận từ cộng đồng cha mẹ, cùng chia sẻ ảnh và video ngắn về hành trình lớn lên của bé.',f2='Ghi lại nhịp sinh hoạt',fd2='Nhật ký ăn, ngủ và thay tã ở cùng một nơi, với các tính năng nhắc nhở tùy theo gói sử dụng.',f3='Cùng gia đình chăm sóc bé',fd3='Mời thành viên gia đình theo dõi, với quyền xem hoặc chỉnh sửa tùy theo gói và quyền được cấp.',notice='Dành cho người lớn chăm sóc trẻ. Câu trả lời trong cộng đồng đến từ các phụ huynh khác, không phải bác sĩ; Little Days không chẩn đoán, điều trị hoặc thay thế tư vấn y tế. Ứng dụng chưa được phát hành trên Google Play.',aboutlabel='02 / NGƯỜI ĐỨNG SAU',abouttitle='Được chăm chút<br>từ những điều nhỏ.',aboutp='RubezApps là studio ứng dụng nhỏ của một gia đình tại Việt Nam. Vũ Trần Nhật Nguyên, một người mẹ, là chủ sở hữu và điều hành toàn bộ dự án. Chồng chị, Ruben Holder, là giáo viên và phụ trách phần lập trình.',team1n='Vũ Trần Nhật Nguyên',team1r='Chủ sở hữu & điều hành · Mẹ',team1d='Lên ý tưởng ứng dụng, quản lý nội dung, cộng đồng và hỗ trợ người dùng.',team2n='Ruben Holder',team2r='Lập trình viên · Giáo viên',team2d='Xây dựng và bảo trì các ứng dụng.',aboutp2='Chúng tôi làm ứng dụng cho cha mẹ và gia đình, trò chơi giúp trẻ học tiếng Anh và tiếng Việt, và những công cụ đơn giản giúp cuộc sống dễ dàng hơn. Little Days là ứng dụng đầu tiên; các ứng dụng khác sẽ ra mắt khi sẵn sàng.',areaslabel='CHÚNG TÔI LÀM GÌ',areastitle='Ứng dụng cho cả nhà',a1='Gia đình & làm cha mẹ',a1d='Ứng dụng giúp cha mẹ kết nối, hỏi han và chăm sóc bé. Đầu tiên: Little Days.',a1s='Đang phát triển',a2='Học tập & trò chơi',a2d='Trò chơi và bài học vui giúp trẻ luyện tiếng Anh và tiếng Việt.',a2s='Sắp ra mắt',a3='Công cụ hữu ích',a3d='Những ứng dụng nhỏ, dễ dùng cho việc hằng ngày.',a3s='Đang lên ý tưởng',role='Vũ Trần Nhật Nguyên · Người điều hành RubezApps',resources='03 / THÔNG TIN & HỖ TRỢ',resright='Little Days',privacy='Quyền riêng tư',pd='Tìm hiểu cách thông tin trong Little Days được xử lý.',support='Hỗ trợ ứng dụng',sd='Hướng dẫn liên hệ khi gặp vấn đề về tài khoản hoặc nội dung.',delete='Xóa tài khoản',dd='Cách xóa tài khoản hoặc gửi yêu cầu xóa dữ liệu.',read='Xem chi tiết',contact='Cùng trò chuyện nhé.',contactdesc='Câu hỏi về RubezApps hoặc một ứng dụng? Hãy gửi email cho Nguyên và cho biết tên ứng dụng.',foot='Do Vũ Trần Nhật Nguyên điều hành · Việt Nam',foot2='Little Days đang phát triển. Chưa có bản phát hành trên Google Play.',help='/vi/'),
-'en':dict(title='RubezApps — Thoughtful apps for everyday life',desc='RubezApps is a small family app studio in Vietnam making apps for families, learning games for children and useful everyday tools.',skip='Skip to main content',nav='Our apps',aboutnav='About',lang='Tiếng Việt',langhref='/',eyebrow='FAMILY APP STUDIO · VIETNAM',h1='Small apps.<br><em>Meaningful days.</em>',intro='We make apps for families, learning games that help children practise English and Vietnamese, and useful tools for everyday life. Run by Vũ Trần Nhật Nguyên in Vietnam.',cta='Explore our apps',minisub='Little moments. Lasting memories.',projects='01 / OUR APPS',projectright='Our first app · more coming',status='In development',apptag='Parent community & baby tracker',appdesc='Ask other moms and dads, get answers from parents who have been there, and share photos and short videos of your baby’s moments. Feeding, sleep and diaper logs keep everyday care easy to follow.',appcta='Ask about the app',f1='Ask other parents',fd1='Post questions, get answers and comments from the parent community, and share photos and short videos of your baby’s growing story.',f2='Follow the little routines',fd2='Feeding, sleep and diaper logs in one place, with reminder features depending on your plan.',f3='Bring the family along',fd3='Invite family members with viewing or editing access, depending on the plan and permissions you choose.',notice='For adult parents and caregivers. Community answers come from other parents, not doctors; Little Days does not diagnose, treat or replace medical advice. The app has not yet launched on Google Play.',aboutlabel='02 / BEHIND THE PROJECT',abouttitle='A personal touch.<br>In every little detail.',aboutp='RubezApps is a small family app studio in Vietnam. Vũ Trần Nhật Nguyên, a mom, owns and runs the whole project. Her husband, Ruben Holder, is a teacher and looks after the coding.',team1n='Vũ Trần Nhật Nguyên',team1r='Owner & project lead · Mom',team1d='Shapes the app ideas and looks after content, the community and user support.',team2n='Ruben Holder',team2r='Developer · Teacher',team2d='Builds and maintains the apps.',aboutp2='We build apps for parents and families, games that help children learn English and Vietnamese, and simple tools that make everyday life easier. Little Days is our first app; more will follow as they become ready.',areaslabel='WHAT WE MAKE',areastitle='Apps for the whole family',a1='Family & parenting',a1d='Apps that help parents connect, ask questions and care for their little ones. First up: Little Days.',a1s='In development',a2='Learning & games',a2d='Playful games and lessons that help children practise English and Vietnamese.',a2s='Coming soon',a3='Useful tools',a3d='Small, easy apps for everyday tasks.',a3s='In planning',role='Vũ Trần Nhật Nguyên · Project lead, RubezApps',resources='03 / INFORMATION & SUPPORT',resright='Little Days',privacy='Your privacy',pd='Understand how information in Little Days is handled.',support='App support',sd='Find contact guidance for account or community concerns.',delete='Account deletion',dd='How to delete an account or request data deletion.',read='Read more',contact='Let’s stay in touch.',contactdesc='Questions about RubezApps or one of our apps? Email Nguyên and include the app’s name.',foot='Run by Vũ Trần Nhật Nguyên · Vietnam',foot2='Little Days is in development. Not yet available on Google Play.',help='/')}
-for lang,d in DATA.items():
- help='https://littledaysparents.com/little-days'+d['help']
- html=f'''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{d['title']}</title><meta name="description" content="{d['desc']}"><meta name="theme-color" content="#fbf9f3"><link rel="icon" href="/assets/brand.svg"><link rel="stylesheet" href="/assets/style.css"><link rel="alternate" hreflang="vi" href="https://littledaysparents.com/"><link rel="alternate" hreflang="en" href="https://littledaysparents.com/en/"></head><body>
-<a class="skip" href="#main">{d['skip']}</a><header><div class="wrap nav"><a class="brand" href="{'/en/' if lang=='en' else '/'}"><span class="brandmark" aria-hidden="true">r</span>RubezApps</a><nav aria-label="{'Main navigation' if lang=='en' else 'Điều hướng chính'}"><a class="desktop-link" href="#little-days">{d['nav']}</a><a class="desktop-link" href="#about">{d['aboutnav']}</a><a class="language" href="{d['langhref']}" lang="{'en' if lang=='vi' else 'vi'}">{d['lang']}</a></nav></div></header>
-<main id="main" class="wrap"><section class="hero"><div><div class="eyebrow"><span class="dot"></span>{d['eyebrow']}</div><h1>{d['h1']}</h1><p class="intro">{d['intro']}</p><a class="button" href="#little-days">{d['cta']} <span aria-hidden="true">↗</span></a></div><div class="studio-art" aria-label="RubezApps"><div class="art-grid" aria-hidden="true"></div><div class="orb orb-one" aria-hidden="true"></div><div class="orb orb-two" aria-hidden="true"></div><div class="brand-tile" aria-hidden="true">r<span>RubezApps</span></div><div class="art-caption"><span>{'Ý tưởng nhỏ. Khả năng lớn.' if lang=='vi' else 'Little ideas. New possibilities.'}</span><span aria-hidden="true">↗</span></div></div></section>
-<div class="section-label" id="little-days"><span>{d['projects']}</span><span>{d['projectright']}</span></div><section class="project" aria-labelledby="app-title"><div><span class="status"><span class="dot"></span>{d['status']}</span><div class="app-name"><img src="/assets/baby-logo.webp" width="64" height="64" alt="Little Days"><div><strong id="app-title">Little Days</strong><small>{d['apptag']}</small></div></div><p>{d['appdesc']}</p><a class="button light" href="mailto:appmakernguyen@gmail.com">{d['appcta']} <span aria-hidden="true">↗</span></a><p class="note">{d['notice']}</p></div><div class="features">'''
- for n in range(1,4):html+=f'<article class="feature"><span class="num">0{n}</span><div><h3>{d["f"+str(n)]}</h3><p>{d["fd"+str(n)]}</p></div></article>'
- html+=f'''</div></section><section class="areas" aria-labelledby="areas-title"><div class="eyebrow">{d['areaslabel']}</div><h2 id="areas-title">{d['areastitle']}</h2><div class="area-grid">'''+''.join(f'<article class="area"><span class="area-status">{d[k+"s"]}</span><h3>{d[k]}</h3><p>{d[k+"d"]}</p></article>' for k in ['a1','a2','a3'])+f'''</div></section><section class="about" id="about" aria-labelledby="about-title"><div><div class="eyebrow">{d['aboutlabel']}</div><h2 id="about-title">{d['abouttitle']}</h2></div><div><p>{d['aboutp']}</p><p>{d['aboutp2']}</p><div class="team"><div class="person"><span class="initial" aria-hidden="true">N</span><div><strong>{d['team1n']}</strong><small>{d['team1r']}</small><p>{d['team1d']}</p></div></div><div class="person"><span class="initial" aria-hidden="true">R</span><div><strong>{d['team2n']}</strong><small>{d['team2r']}</small><p>{d['team2d']}</p></div></div></div></div></section><div class="section-label"><span>{d['resources']}</span><span>{d['resright']}</span></div><section class="resources" aria-label="{'Help resources' if lang=='en' else 'Thông tin hỗ trợ'}">'''
- for key,desc,path in [('privacy','pd','privacy/'),('support','sd','support/'),('delete','dd','account-deletion/')]:
-  html+=f'<a class="resource" href="{help+path}"><h3>{d[key]} <span aria-hidden="true">↗</span></h3><p>{d[desc]}</p><span class="link">{d["read"]}</span></a>'
- html+=f'''</section><section class="contact" id="contact"><div><h2>{d['contact']}</h2><p>{d['contactdesc']}</p></div><a class="button light email" href="mailto:appmakernguyen@gmail.com">appmakernguyen@gmail.com <span aria-hidden="true">↗</span></a></section></main><footer><div class="wrap footer-inner"><p><span class="foot-brand">© 2026 RubezApps</span><br>{d['foot']}</p><p>{d['foot2']}</p></div></footer></body></html>'''
- target=ROOT/('en/index.html' if lang=='en' else 'index.html');target.write_text(html)
-(ROOT/'robots.txt').write_text('User-agent: *\nAllow: /\n')
-print('Built Vietnamese and English pages')
+import json
+ROOT = Path(__file__).parent / 'dist'
+SITE = 'https://littledaysparents.com'
+APP = 'Little Days Parents'
+EMAIL = 'appmakernguyen@gmail.com'
+
+DATA = {
+'vi': dict(
+ path='/', title=f'{APP} — Theo dõi bé & cộng đồng cha mẹ',
+ desc=f'{APP} là ứng dụng theo dõi bé và cộng đồng cha mẹ: ghi lại cữ ăn, giấc ngủ, thay tã, chia sẻ nhật ký với gia đình và hỏi các bố mẹ khác. Sắp có trên Google Play và App Store.',
+ skip='Đến nội dung chính', navf='Tính năng', navp='Các gói', navh='Hỗ trợ', lang='English', nav_label='Điều hướng chính',
+ eyebrow='THEO DÕI BÉ · CỘNG ĐỒNG CHA MẸ', h1='Mỗi ngày nhỏ.<br><em>Cùng nhau.</em>',
+ intro=f'{APP} giúp cha mẹ ghi lại cữ ăn, giấc ngủ và thay tã của bé, chia sẻ nhật ký với cả nhà và hỏi những bố mẹ đã từng trải qua.',
+ soon='Sắp có trên Google Play và App Store', cta='Xem tính năng', caption='Khoảnh khắc nhỏ, kỷ niệm lớn.',
+ featlabel='01 / TÍNH NĂNG', featright='Dành cho cha mẹ & người chăm sóc',
+ apptag='Theo dõi bé & cộng đồng cha mẹ',
+ appdesc='Một nơi cho nhật ký chăm bé hằng ngày, cho cả gia đình và cho những câu hỏi mà chỉ các bố mẹ khác mới hiểu.',
+ feats=[('Ghi lại nhịp sinh hoạt', 'Sữa bình, bú mẹ, ăn dặm, thay tã và giấc ngủ ở cùng một nơi, với bộ đếm giờ ngủ và tóm tắt theo ngày.'),
+        ('Cùng gia đình chăm bé', 'Mời tối đa 4 người vào gia đình. Mỗi người đăng nhập riêng, nhật ký đồng bộ giữa các điện thoại, bạn chọn ai được xem hay chỉnh sửa.'),
+        ('Hỏi các bố mẹ khác', 'Đặt câu hỏi, nhận câu trả lời và bình luận, chia sẻ ảnh và video ngắn về những khoảnh khắc của bé.'),
+        ('Nhắc cữ ăn & thông báo', 'Lời nhắc cữ ăn và thông báo hẹn giờ ngủ trên điện thoại, theo gói bạn sử dụng.')],
+ notice=f'Dành cho cha mẹ và người chăm sóc trưởng thành. Câu trả lời trong cộng đồng đến từ các phụ huynh khác, không phải bác sĩ; {APP} không chẩn đoán, điều trị hoặc thay thế tư vấn y tế.',
+ planlabel='02 / CÁC GÓI', plantitle='Bắt đầu miễn phí',
+ plans=[('Miễn phí', 'Có quảng cáo', 'Nhật ký của bé và cộng đồng cha mẹ. Gia đình gồm 2 người; có thể mua thêm thành viên theo tháng, tối đa 4 người.'),
+        ('Plus', 'Theo tháng', 'Đầy đủ tính năng, không quảng cáo, gia đình tối đa 4 người.'),
+        ('Pro', 'Theo năm', 'Giống Plus, thanh toán theo năm.')],
+ plannote='Giá và điều kiện gia hạn sẽ hiển thị trong ứng dụng trước khi bạn mua.',
+ aboutlabel='03 / NGƯỜI LÀM RA ỨNG DỤNG', abouttitle='Được làm bởi<br>một gia đình.',
+ aboutp=f'{APP} được làm bởi RubezApps, một studio ứng dụng nhỏ của một gia đình tại Việt Nam. Vũ Trần Nhật Nguyên, một người mẹ, là chủ sở hữu và điều hành dự án. Chồng chị, Ruben Holder, là giáo viên và phụ trách phần lập trình.',
+ team=[('N', 'Vũ Trần Nhật Nguyên', 'Chủ sở hữu & điều hành · Mẹ', 'Lên ý tưởng, quản lý nội dung, cộng đồng và hỗ trợ người dùng.'),
+       ('R', 'Ruben Holder', 'Lập trình viên · Giáo viên', 'Xây dựng và bảo trì ứng dụng.')],
+ helplabel='04 / THÔNG TIN & HỖ TRỢ', helpright=APP,
+ helps=[('Quyền riêng tư', f'Cách thông tin trong {APP} được xử lý.', 'privacy/'),
+        ('Hỗ trợ', 'Liên hệ khi gặp vấn đề về tài khoản hoặc nội dung.', 'support/'),
+        ('Xóa tài khoản', 'Cách xóa tài khoản hoặc gửi yêu cầu xóa dữ liệu.', 'account-deletion/')],
+ read='Xem chi tiết', terms='Điều khoản & nội quy', helpbase='/little-days/vi/',
+ contact='Cùng trò chuyện nhé.', contactdesc=f'Câu hỏi về {APP}? Hãy gửi email cho Nguyên.',
+ foot='Do Vũ Trần Nhật Nguyên điều hành · Việt Nam', foot2=f'{APP} đang phát triển. Chưa có trên Google Play hoặc App Store.'),
+'en': dict(
+ path='/en/', title=f'{APP} — Baby tracker & parents community',
+ desc=f'{APP} is a baby tracker and parents community app: log feeding, sleep and diapers, share the journal with your family and ask other parents. Coming soon to Google Play and the App Store.',
+ skip='Skip to main content', navf='Features', navp='Plans', navh='Help', lang='Tiếng Việt', nav_label='Main navigation',
+ eyebrow='BABY TRACKER · PARENTS COMMUNITY', h1='Every little day.<br><em>Together.</em>',
+ intro=f'{APP} helps you log your baby’s feeds, sleep and diapers, share the journal with your family, and ask parents who have been there.',
+ soon='Coming soon to Google Play and the App Store', cta='See the features', caption='Little moments. Lasting memories.',
+ featlabel='01 / FEATURES', featright='For parents & caregivers',
+ apptag='Baby tracker & parents community',
+ appdesc='One place for everyday baby care, for the whole family, and for the questions only other parents understand.',
+ feats=[('Follow the little routines', 'Bottles, breastfeeding, food, diapers and sleep in one place, with a sleep timer and daily summaries.'),
+        ('Bring the family along', 'Invite up to 4 people into your family. Everyone signs in with their own account, the journal syncs across phones, and you choose who can view or edit.'),
+        ('Ask other parents', 'Post questions, get answers and comments, and share photos and short videos of your baby’s moments.'),
+        ('Feeding reminders & alerts', 'Feeding reminders and sleep-timer notifications on your phone, depending on your plan.')],
+ notice=f'For adult parents and caregivers. Community answers come from other parents, not doctors; {APP} does not diagnose, treat or replace medical advice.',
+ planlabel='02 / PLANS', plantitle='Start for free',
+ plans=[('Free', 'With ads', 'Baby journal and the parents community. A family of 2 people; a monthly add-on allows up to 4.'),
+        ('Plus', 'Monthly', 'All features, no ads, a family of up to 4 people.'),
+        ('Pro', 'Yearly', 'The same as Plus, paid yearly.')],
+ plannote='Prices and renewal terms are shown in the app before you buy.',
+ aboutlabel='03 / WHO MAKES IT', abouttitle='Made by<br>a family.',
+ aboutp=f'{APP} is made by RubezApps, a small family app studio in Vietnam. Vũ Trần Nhật Nguyên, a mom, owns and runs the project. Her husband, Ruben Holder, is a teacher and looks after the coding.',
+ team=[('N', 'Vũ Trần Nhật Nguyên', 'Owner & project lead · Mom', 'Shapes the app and looks after content, the community and user support.'),
+       ('R', 'Ruben Holder', 'Developer · Teacher', 'Builds and maintains the app.')],
+ helplabel='04 / INFORMATION & SUPPORT', helpright=APP,
+ helps=[('Your privacy', f'How information in {APP} is handled.', 'privacy/'),
+        ('App support', 'Get help with your account or community content.', 'support/'),
+        ('Account deletion', 'How to delete an account or request data deletion.', 'account-deletion/')],
+ read='Read more', terms='Terms & community rules', helpbase='/little-days/',
+ contact='Let’s stay in touch.', contactdesc=f'Questions about {APP}? Email Nguyên.',
+ foot='Run by Vũ Trần Nhật Nguyên · Vietnam', foot2=f'{APP} is in development. Not yet available on Google Play or the App Store.'),
+}
+
+def structured(d, lang):
+    """Tells Google the site name, the app and who makes it."""
+    return json.dumps([
+        {'@context': 'https://schema.org', '@type': 'WebSite', 'name': APP, 'alternateName': 'Little Days', 'url': SITE + '/', 'inLanguage': ['vi', 'en']},
+        {'@context': 'https://schema.org', '@type': 'Organization', 'name': 'RubezApps', 'url': SITE + '/', 'logo': SITE + '/assets/icon-512.png', 'email': EMAIL},
+        {'@context': 'https://schema.org', '@type': 'MobileApplication', 'name': APP, 'operatingSystem': 'Android, iOS', 'applicationCategory': 'LifestyleApplication',
+         'description': d['desc'], 'url': SITE + d['path'], 'image': SITE + '/assets/icon-512.png', 'inLanguage': lang, 'publisher': {'@type': 'Organization', 'name': 'RubezApps'}},
+    ], ensure_ascii=False)
+
+for lang, d in DATA.items():
+    other = DATA['en' if lang == 'vi' else 'vi']
+    url = SITE + d['path']
+    head = (f'<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+            f'<title>{d["title"]}</title><meta name="description" content="{d["desc"]}"><meta name="theme-color" content="#fbf9f3">'
+            f'<link rel="canonical" href="{url}"><link rel="alternate" hreflang="vi" href="{SITE}/"><link rel="alternate" hreflang="en" href="{SITE}/en/"><link rel="alternate" hreflang="x-default" href="{SITE}/">'
+            f'<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png"><link rel="apple-touch-icon" href="/assets/icon-512.png"><link rel="stylesheet" href="/assets/style.css">'
+            f'<meta property="og:type" content="website"><meta property="og:site_name" content="{APP}"><meta property="og:title" content="{d["title"]}"><meta property="og:description" content="{d["desc"]}">'
+            f'<meta property="og:url" content="{url}"><meta property="og:image" content="{SITE}/assets/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
+            f'<meta property="og:locale" content="{"vi_VN" if lang == "vi" else "en_US"}"><meta name="twitter:card" content="summary_large_image">'
+            f'<script type="application/ld+json">{structured(d, lang)}</script></head><body>')
+    h = head + (
+        f'<a class="skip" href="#main">{d["skip"]}</a><header><div class="wrap nav"><a class="brand" href="{d["path"]}"><img class="brandlogo" src="/assets/baby-logo.webp" width="38" height="38" alt="">{APP}</a>'
+        f'<nav aria-label="{d["nav_label"]}"><a class="desktop-link" href="#features">{d["navf"]}</a><a class="desktop-link" href="#plans">{d["navp"]}</a><a class="desktop-link" href="#help">{d["navh"]}</a>'
+        f'<a class="language" href="{other["path"]}" lang="{"en" if lang == "vi" else "vi"}">{d["lang"]}</a></nav></div></header>'
+        f'<main id="main" class="wrap"><section class="hero"><div><div class="eyebrow"><span class="dot"></span>{d["eyebrow"]}</div><h1>{d["h1"]}</h1><p class="intro">{d["intro"]}</p>'
+        f'<p class="soon"><span class="status"><span class="dot"></span>{d["soon"]}</span></p><a class="button" href="#features">{d["cta"]} <span aria-hidden="true">↓</span></a></div>'
+        f'<div class="studio-art" aria-hidden="true"><div class="art-grid"></div><div class="orb orb-one"></div><div class="orb orb-two"></div>'
+        f'<div class="brand-tile app-tile"><img src="/assets/baby-logo.webp" width="110" height="110" alt=""><span>LITTLE DAYS PARENTS</span></div>'
+        f'<div class="art-caption"><span>{d["caption"]}</span><span>♡</span></div></div></section>'
+        f'<div class="section-label" id="features"><span>{d["featlabel"]}</span><span>{d["featright"]}</span></div><section class="project" aria-labelledby="app-title"><div>'
+        f'<div class="app-name"><img src="/assets/baby-logo.webp" width="64" height="64" alt="{APP} logo"><div><h2 id="app-title" class="app-title">{APP}</h2><small>{d["apptag"]}</small></div></div>'
+        f'<p>{d["appdesc"]}</p><p class="note">{d["notice"]}</p></div><div class="features">'
+        + ''.join(f'<article class="feature"><span class="num">0{i}</span><div><h3>{t}</h3><p>{x}</p></div></article>' for i, (t, x) in enumerate(d['feats'], 1))
+        + f'</div></section><section class="areas" id="plans" aria-labelledby="plans-title"><div class="eyebrow">{d["planlabel"]}</div><h2 id="plans-title">{d["plantitle"]}</h2><div class="area-grid">'
+        + ''.join(f'<article class="area"><span class="area-status">{s}</span><h3>{n}</h3><p>{x}</p></article>' for n, s, x in d['plans'])
+        + f'</div><p class="plan-note">{d["plannote"]}</p></section>'
+        f'<section class="about" id="about" aria-labelledby="about-title"><div><div class="eyebrow">{d["aboutlabel"]}</div><h2 id="about-title">{d["abouttitle"]}</h2></div><div><p>{d["aboutp"]}</p><div class="team">'
+        + ''.join(f'<div class="person"><span class="initial" aria-hidden="true">{i}</span><div><strong>{n}</strong><small>{r}</small><p>{x}</p></div></div>' for i, n, r, x in d['team'])
+        + f'</div></div></section><div class="section-label" id="help"><span>{d["helplabel"]}</span><span>{d["helpright"]}</span></div><section class="resources" aria-label="{d["navh"]}">'
+        + ''.join(f'<a class="resource" href="{d["helpbase"] + p}"><h3>{t} <span aria-hidden="true">↗</span></h3><p>{x}</p><span class="link">{d["read"]}</span></a>' for t, x, p in d['helps'])
+        + f'</section><section class="contact" id="contact"><div><h2>{d["contact"]}</h2><p>{d["contactdesc"]}</p></div><a class="button light email" href="mailto:{EMAIL}">{EMAIL} <span aria-hidden="true">↗</span></a></section></main>'
+        f'<footer><div class="wrap footer-inner"><p><span class="foot-brand">© 2026 {APP} · RubezApps</span><br>{d["foot"]}</p><p>{d["foot2"]}<br><a href="{d["helpbase"]}terms/">{d["terms"]}</a></p></div></footer></body></html>')
+    target = ROOT / ('en/index.html' if lang == 'en' else 'index.html')
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(h)
+(ROOT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
+print('Built Vietnamese and English homepages')

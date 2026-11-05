@@ -10,3 +10,5 @@ rmdir little-days/en 2>/dev/null || true
 rm -rf src/developer/dist src/little-days-help/dist
 # Short addresses (littledaysparents.com/privacy etc.)
 python3 src/redirects.py
+# Page list for Google (littledaysparents.com/sitemap.xml)
+python3 src/sitemap.py

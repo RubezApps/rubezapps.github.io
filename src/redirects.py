@@ -7,6 +7,6 @@ for name, target in SHORT.items():
     os.makedirs(name, exist_ok=True)
     url = 'https://littledaysparents.com' + target
     open(os.path.join(name, 'index.html'), 'w').write(
-        f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Little Days</title>'
+        f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Little Days Parents</title>'
         f'<link rel="canonical" href="{url}"><meta http-equiv="refresh" content="0; url={target}">'
-        f'<meta name="robots" content="noindex"></head><body><p><a href="{target}">Continue to Little Days</a></p></body></html>\n')
+        f'<meta name="robots" content="noindex"></head><body><p><a href="{target}">Continue to Little Days Parents</a></p></body></html>\n')

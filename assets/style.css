@@ -3,3 +3,13 @@
 
 .team{display:grid;gap:14px;margin-top:6px}.person{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.55);border-radius:16px;padding:16px 18px}.person .initial{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;font-weight:700}.person strong{display:block;color:var(--ink);font-size:16px}.person small{display:block;font-size:12px;letter-spacing:.4px;text-transform:uppercase;opacity:.75;margin:2px 0 6px}.about .person p{font-size:14px;margin:0}
 .areas{margin:10px 0 60px}.areas h2{margin:14px 0 24px}.area-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.area{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:24px}.area h3{margin:12px 0 8px;font-size:19px}.area p{margin:0;font-size:14px;line-height:1.6;opacity:.85}.area-status{display:inline-block;font-size:11px;letter-spacing:.6px;text-transform:uppercase;background:var(--sage);border-radius:99px;padding:4px 10px}@media(max-width:850px){.area-grid{grid-template-columns:1fr}}
+
+/* Little Days Parents homepage (5 Nov 2026) */
+.brandlogo{width:38px;height:38px;border-radius:11px;flex:none}
+.brand-tile.app-tile img{width:110px;height:110px;border-radius:26px;display:block}
+.brand-tile.app-tile span{text-align:center;padding:0 8px}
+.project .app-name .app-title{font-size:24px;font-weight:600;line-height:1.3;margin:0}
+.soon{margin:0 0 22px}
+.plan-note{font-size:13px;color:var(--muted);margin-top:16px}
+footer a{color:inherit}
+@media(max-width:620px){.brand{font-size:18px;letter-spacing:-.5px}.brandlogo{width:32px;height:32px}.brand-tile.app-tile img{width:92px;height:92px}}

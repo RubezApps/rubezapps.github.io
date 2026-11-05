@@ -1,4 +1,4 @@
-# Little Days public privacy and support
+# Little Days Parents public privacy and support
 
 Static English/Vietnamese help site. No login, app API access, analytics SDK, remote fonts, payment collection or server-side form submission.
 
