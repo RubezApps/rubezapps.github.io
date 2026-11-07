@@ -16,6 +16,7 @@ DATA = {
  intro=f'{APP} giúp cha mẹ ghi lại cữ ăn, giấc ngủ và thay tã của bé, chia sẻ nhật ký với cả nhà và hỏi những bố mẹ đã từng trải qua.',
  soon='Sắp có trên Google Play và App Store', cta='Xem tính năng', caption='Khoảnh khắc nhỏ, kỷ niệm lớn.',
  featlabel='01 / TÍNH NĂNG', featright='Dành cho cha mẹ & người chăm sóc',
+ shotlabel='02 / XEM BÊN TRONG', shottitle='Một ngày với bé, ngay trong điện thoại.', shots=[('home','Trang chủ của bé'),('feeding','Cữ ăn'),('sleep','Giấc ngủ'),('diapers','Thay tã'),('community','Cộng đồng cha mẹ'),('family-feed','Bảng tin gia đình')], shotalt='Màn hình ứng dụng',
  apptag='Theo dõi bé & cộng đồng cha mẹ',
  appdesc='Một nơi cho nhật ký chăm bé hằng ngày, cho cả gia đình và cho những câu hỏi mà chỉ các bố mẹ khác mới hiểu.',
  feats=[('Ghi lại nhịp sinh hoạt', 'Sữa bình, bú mẹ, ăn dặm, thay tã và giấc ngủ ở cùng một nơi, với bộ đếm giờ ngủ và tóm tắt theo ngày.'),
@@ -23,16 +24,16 @@ DATA = {
         ('Hỏi các bố mẹ khác', 'Đặt câu hỏi, nhận câu trả lời và bình luận, chia sẻ ảnh và video ngắn về những khoảnh khắc của bé.'),
         ('Nhắc cữ ăn & thông báo', 'Lời nhắc cữ ăn và thông báo hẹn giờ ngủ trên điện thoại, theo gói bạn sử dụng.')],
  notice=f'Dành cho cha mẹ và người chăm sóc trưởng thành. Câu trả lời trong cộng đồng đến từ các phụ huynh khác, không phải bác sĩ; {APP} không chẩn đoán, điều trị hoặc thay thế tư vấn y tế.',
- planlabel='02 / CÁC GÓI', plantitle='Bắt đầu miễn phí',
+ planlabel='03 / CÁC GÓI', plantitle='Bắt đầu miễn phí',
  plans=[('Miễn phí', 'Có quảng cáo', 'Nhật ký của bé và cộng đồng cha mẹ. Gia đình gồm 2 người; có thể mua thêm thành viên theo tháng, tối đa 4 người.'),
         ('Plus', 'Theo tháng', 'Đầy đủ tính năng, không quảng cáo, gia đình tối đa 4 người.'),
         ('Pro', 'Theo năm', 'Giống Plus, thanh toán theo năm.')],
  plannote='Giá và điều kiện gia hạn sẽ hiển thị trong ứng dụng trước khi bạn mua.',
- aboutlabel='03 / NGƯỜI LÀM RA ỨNG DỤNG', abouttitle='Được làm bởi<br>một gia đình.',
+ aboutlabel='04 / NGƯỜI LÀM RA ỨNG DỤNG', abouttitle='Được làm bởi<br>một gia đình.',
  aboutp=f'{APP} được làm bởi RubezApps, một studio ứng dụng nhỏ của một gia đình tại Việt Nam. Vũ Trần Nhật Nguyên, một người mẹ, là chủ sở hữu và điều hành dự án. Chồng chị, Ruben Holder, là giáo viên và phụ trách phần lập trình.',
  team=[('N', 'Vũ Trần Nhật Nguyên', 'Chủ sở hữu & điều hành · Mẹ', 'Lên ý tưởng, quản lý nội dung, cộng đồng và hỗ trợ người dùng.'),
        ('R', 'Ruben Holder', 'Lập trình viên · Giáo viên', 'Xây dựng và bảo trì ứng dụng.')],
- helplabel='04 / THÔNG TIN & HỖ TRỢ', helpright=APP,
+ helplabel='05 / THÔNG TIN & HỖ TRỢ', helpright=APP,
  helps=[('Quyền riêng tư', f'Cách thông tin trong {APP} được xử lý.', 'privacy/'),
         ('Hỗ trợ', 'Liên hệ khi gặp vấn đề về tài khoản hoặc nội dung.', 'support/'),
         ('Xóa tài khoản', 'Cách xóa tài khoản hoặc gửi yêu cầu xóa dữ liệu.', 'account-deletion/')],
@@ -47,6 +48,7 @@ DATA = {
  intro=f'{APP} helps you log your baby’s feeds, sleep and diapers, share the journal with your family, and ask parents who have been there.',
  soon='Coming soon to Google Play and the App Store', cta='See the features', caption='Little moments. Lasting memories.',
  featlabel='01 / FEATURES', featright='For parents & caregivers',
+ shotlabel='02 / A LOOK INSIDE', shottitle='A day with your baby, right on your phone.', shots=[('home','Baby home'),('feeding','Feeding'),('sleep','Sleep'),('diapers','Diapers'),('community','Parent community'),('family-feed','Family feed')], shotalt='App screen',
  apptag='Baby tracker & parents community',
  appdesc='One place for everyday baby care, for the whole family, and for the questions only other parents understand.',
  feats=[('Follow the little routines', 'Bottles, breastfeeding, food, diapers and sleep in one place, with a sleep timer and daily summaries.'),
@@ -54,16 +56,16 @@ DATA = {
         ('Ask other parents', 'Post questions, get answers and comments, and share photos and short videos of your baby’s moments.'),
         ('Feeding reminders & alerts', 'Feeding reminders and sleep-timer notifications on your phone, depending on your plan.')],
  notice=f'For adult parents and caregivers. Community answers come from other parents, not doctors; {APP} does not diagnose, treat or replace medical advice.',
- planlabel='02 / PLANS', plantitle='Start for free',
+ planlabel='03 / PLANS', plantitle='Start for free',
  plans=[('Free', 'With ads', 'Baby journal and the parents community. A family of 2 people; a monthly add-on allows up to 4.'),
         ('Plus', 'Monthly', 'All features, no ads, a family of up to 4 people.'),
         ('Pro', 'Yearly', 'The same as Plus, paid yearly.')],
  plannote='Prices and renewal terms are shown in the app before you buy.',
- aboutlabel='03 / WHO MAKES IT', abouttitle='Made by<br>a family.',
+ aboutlabel='04 / WHO MAKES IT', abouttitle='Made by<br>a family.',
  aboutp=f'{APP} is made by RubezApps, a small family app studio in Vietnam. Vũ Trần Nhật Nguyên, a mom, owns and runs the project. Her husband, Ruben Holder, is a teacher and looks after the coding.',
  team=[('N', 'Vũ Trần Nhật Nguyên', 'Owner & project lead · Mom', 'Shapes the app and looks after content, the community and user support.'),
        ('R', 'Ruben Holder', 'Developer · Teacher', 'Builds and maintains the app.')],
- helplabel='04 / INFORMATION & SUPPORT', helpright=APP,
+ helplabel='05 / INFORMATION & SUPPORT', helpright=APP,
  helps=[('Your privacy', f'How information in {APP} is handled.', 'privacy/'),
         ('App support', 'Get help with your account or community content.', 'support/'),
         ('Account deletion', 'How to delete an account or request data deletion.', 'account-deletion/')],
@@ -105,6 +107,8 @@ for lang, d in DATA.items():
         f'<div class="app-name"><img src="/assets/baby-logo.webp" width="64" height="64" alt="{APP} logo"><div><h2 id="app-title" class="app-title">{APP}</h2><small>{d["apptag"]}</small></div></div>'
         f'<p>{d["appdesc"]}</p><p class="note">{d["notice"]}</p></div><div class="features">'
         + ''.join(f'<article class="feature"><span class="num">0{i}</span><div><h3>{t}</h3><p>{x}</p></div></article>' for i, (t, x) in enumerate(d['feats'], 1))
+        + f'</div></section><section class="shots" aria-labelledby="shots-title"><div class="eyebrow">{d["shotlabel"]}</div><h2 id="shots-title">{d["shottitle"]}</h2><div class="shot-row">'
+        + ''.join(f'<figure class="shot"><div class="phone"><img src="/assets/screens/{k}.webp" width="240" height="505" loading="lazy" decoding="async" alt="{d["shotalt"]}: {c}"></div><figcaption>{c}</figcaption></figure>' for k, c in d['shots'])
         + f'</div></section><section class="areas" id="plans" aria-labelledby="plans-title"><div class="eyebrow">{d["planlabel"]}</div><h2 id="plans-title">{d["plantitle"]}</h2><div class="area-grid">'
         + ''.join(f'<article class="area"><span class="area-status">{s}</span><h3>{n}</h3><p>{x}</p></article>' for n, s, x in d['plans'])
         + f'</div><p class="plan-note">{d["plannote"]}</p></section>'
