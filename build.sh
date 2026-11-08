@@ -12,3 +12,8 @@ rm -rf src/developer/dist src/little-days-help/dist
 python3 src/redirects.py
 # Page list for Google (littledaysparents.com/sitemap.xml)
 python3 src/sitemap.py
+
+# Family invitation links (littledaysparents.com/join?code=...) and the app link verification files
+mkdir -p join .well-known
+cp src/join/index.html join/index.html
+cp src/well-known/apple-app-site-association src/well-known/assetlinks.json .well-known/

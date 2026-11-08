@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>Join a Little Days family</title>
+<style>
+:root{--ink:#394a45;--muted:#7e8982;--green:#4f7461;--cream:#f8f5f0;--line:#e9e9e0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;display:grid;min-height:100vh;place-items:center;padding:24px}
+main{max-width:440px;width:100%;background:#fffdf9;border:1px solid var(--line);border-radius:24px;padding:28px 24px;text-align:center}
+h1{font-size:24px;line-height:1.2;margin:0 0 8px}
+p{margin:0 0 14px;color:var(--muted)}
+.btn{display:block;width:100%;padding:15px 18px;border-radius:999px;border:0;background:var(--green);color:#fff;font:700 16px inherit;text-decoration:none;margin:18px 0 10px;cursor:pointer}
+.btn.alt{background:#fffdf9;color:var(--ink);border:1px solid var(--line);margin:0 0 14px}
+.code{font:700 17px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;background:#f1efe8;border-radius:12px;padding:12px;word-break:break-all;color:var(--ink);margin:0 0 10px}
+small{display:block;color:var(--muted)}
+[hidden]{display:none}
+</style>
+</head>
+<body>
+<main>
+ <h1>You were invited to a Little Days family ♡</h1>
+ <div id="ok" hidden>
+  <p>Tap the button to open Little Days Parents. Your invitation code will be filled in for you.</p>
+  <a class="btn" id="open" href="#">Open in Little Days Parents</a>
+  <p>App doesn't open? Open Little Days Parents, go to <strong>Our family</strong>, and paste this invitation code:</p>
+  <div class="code" id="code"></div>
+  <button class="btn alt" id="copy" type="button">Copy code</button>
+  <small>Don't have the app yet? Ask the person who invited you how to get it. The invitation works once and expires after 7 days.</small>
+ </div>
+ <div id="bad" hidden>
+  <p>This invitation link looks incomplete. Ask the person who invited you to send it again.</p>
+ </div>
+</main>
+<script>
+(function(){
+ var code=new URLSearchParams(location.hash.replace(/^#/,'')).get('code')||new URLSearchParams(location.search).get('code')||'';
+ var valid=/^[A-Za-z0-9_-]{6,80}$/.test(code);
+ if(!valid){document.getElementById('bad').hidden=false;return}
+ document.getElementById('ok').hidden=false;
+ document.getElementById('code').textContent=code;
+ var link='littledays-app://join?code='+encodeURIComponent(code);
+ document.getElementById('open').href=link;
+ document.getElementById('copy').onclick=function(){
+  var b=this;
+  (navigator.clipboard?navigator.clipboard.writeText(code):Promise.reject()).then(function(){b.textContent='Copied ✓'},function(){b.textContent='Select the code above and copy it'});
+ };
+ // Phones: try to open the app by itself once.
+ if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){setTimeout(function(){location.href=link},400)}
+})();
+</script>
+</body>
+</html>
