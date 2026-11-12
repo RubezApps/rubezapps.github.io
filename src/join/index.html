@@ -30,7 +30,7 @@ small{display:block;color:var(--muted)}
   <p>App doesn't open? Open Little Days Parents, go to <strong>Our family</strong>, and paste this invitation code:</p>
   <div class="code" id="code"></div>
   <button class="btn alt" id="copy" type="button">Copy code</button>
-  <small>Don't have the app yet? Ask the person who invited you how to get it. The invitation works once and expires after 7 days.</small>
+  <small>Don't have the app yet? Install Little Days Parents, then come back to this page. The invitation works once and expires after 7 days.</small>
  </div>
  <div id="bad" hidden>
   <p>This invitation link looks incomplete. Ask the person who invited you to send it again.</p>
@@ -49,8 +49,8 @@ small{display:block;color:var(--muted)}
   var b=this;
   (navigator.clipboard?navigator.clipboard.writeText(code):Promise.reject()).then(function(){b.textContent='Copied ✓'},function(){b.textContent='Select the code above and copy it'});
  };
- // Phones: try to open the app by itself once.
- if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){setTimeout(function(){location.href=link},400)}
+ // No automatic redirect to littledays-app:// (another app on the phone could claim that scheme and read the code).
+ // The verified https link opens the app by itself; the button above is the manual fallback.
 })();
 </script>
 </body>

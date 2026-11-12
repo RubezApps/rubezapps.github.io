@@ -1,1 +1,1 @@
-[{"relation":["delegate_permission/common.handle_all_urls"],"target":{"namespace":"android_app","package_name":"com.rubezapps.littledays","sha256_cert_fingerprints":["REPLACE_WITH_PLAY_APP_SIGNING_SHA256"]}}]
+[{"relation":["delegate_permission/common.handle_all_urls"],"target":{"namespace":"android_app","package_name":"com.rubezapps.littledaysparents","sha256_cert_fingerprints":["4D:57:83:81:F7:08:EA:3F:87:85:32:E5:0D:33:D2:08:8D:DC:92:1A:94:E8:64:28:6B:77:2B:68:39:84:E7:8F","3D:F1:D1:64:76:4E:79:EB:29:B9:5E:A4:21:54:9C:FC:1F:67:36:26:46:A3:61:3D:B6:77:D0:1C:39:0A:5B:6A"]}}]
